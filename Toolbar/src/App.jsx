@@ -1,65 +1,77 @@
 import { useState } from 'react';
-import './App.css';
-import { Row, Col, Divider, Button } from 'antd';
+import {BoldOutlined , ItalicOutlined, UnderlineOutlined } from '@ant-design/icons'
+//import { Row, Col, Divider} from 'antd';
 import styled from "styled-components"
 function App() {
-  const [isShowa, setIsShowa] = useState(false);
-  const [isShowb, setIsShowb] = useState(false);
+  const [isShowBold, setIsShowaBold] = useState(false);
+  const [isShowItalic, setIsShowbItalic] = useState(false);
+  const [isShowUnderline, setIsShowUnderline] = useState(false);
 
-  const showa = () => {
-    setIsShowa(!isShowa);
+  const showBold = () => {
+    setIsShowaBold(!isShowBold);
+    console.log(" Chữ viết đã in đậm");
   }
-  const showb = () => {
-    setIsShowb(!isShowb);
+  const showItalic = () => {
+    setIsShowbItalic(!isShowItalic);
+    console.log(" Chữ viết đã in nghiêng");
   }
+  const showUnderline = () => {
+    setIsShowUnderline(!isShowUnderline);
+    console.log(" Chữ viết đã Gạch chân");
+  }
+
+  const AppTollbar = styled.div`
+  font-family: "Font Awesome 5 Free";
+  `;
   const Heading = styled.h1`
-  color: red;
+  color: #414141;
+  font-size: 3rem;
+  `;
+
+  const Toolbar = styled.div`
+  background:#efefef;
+
+  
   `;
   const Button = styled.button`
-  background: ${props => props.primary ? "palevioletred" : "white"};
-  color: ${props => props.primary ? "white" : "palevioletred"};
+  
+  color: black;
   cursor: pointer;
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
+  border: none;
+  
     `;
-    // tạo nút mới kế thừa các thuộc tính từ đối tượng trong ngoặc tròn và thêm, sửa
-    const ButtonLink = styled(Button) `
-    background:palevioletred;
-    color:blue;
-    `;
+    
   return (
-    <div className="App">
+    <AppTollbar >
       <Heading className="heading">Tool bar</Heading>
 
-      <div className="toolbar">
-        <Button onClick={() => showa()}>
-          a
+      <Toolbar >
+        
+        <Button onClick={() => showBold()}>
+        <BoldOutlined />
         </Button>
-        <Button primary onClick={() => showb()}>
-          b
+        <Button  onClick={() => showItalic()}>
+        <ItalicOutlined />
         </Button>
-        <ButtonLink  type="link">Link Button</ButtonLink>
-      </div>
+        <Button onClick={() => showUnderline()} ><UnderlineOutlined /></Button>
+      </Toolbar>
       <div className="text">
-        <span> {isShowa ? "Hello a" : ""}</span>
-        <span> {isShowb ? "Hello b" : ""}</span>
+        
+        <span> {isShowBold ? " Chữ viết đã in đậm" : ""}</span>
+        <span> {isShowItalic ? "Chữ viết đã in nghiêng" : ""}</span>
+        <span> {isShowUnderline ? "Chữ viết đã gạch chân" : ""}</span>
 
-        <Divider orientation='left' > vidu row</Divider>
-        <Row justify='center'>
-          <Col span={4}>col-4</Col>
-          <Col span={4}>col-4</Col>
-          <Col span={4}>col-4</Col>
-          <Col span={4}>col-4</Col>
-        </Row>
+
+        
 
 
       </div>
 
 
-    </div>
+    </AppTollbar>
   )
 }
 
