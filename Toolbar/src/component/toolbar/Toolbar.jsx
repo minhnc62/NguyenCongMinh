@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import "./toolbar.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBold, faItalic, faUnderline } from "@fortawesome/free-solid-svg-icons"
+import { faBold, faItalic, faUnderline, faHeading} from "@fortawesome/free-solid-svg-icons"
 //import styled from "styled-components"
 import Button from '../button/Button';
 const Toolbar = ({ showBold, showItalic, showUnderline }) => {
@@ -41,6 +41,9 @@ const Toolbar = ({ showBold, showItalic, showUnderline }) => {
                 </Button>
                 <Button icon={faUnderline} handleClick={showUnderline} >
                 </Button>
+                <Button icon={faHeading} handleClick={showUnderline} >
+                </Button>
+                
             </div>
             <div>
                 <Button icon={faBold} handleClick={showBold}>
