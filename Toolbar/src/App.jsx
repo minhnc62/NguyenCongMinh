@@ -9,8 +9,8 @@ function App() {
   const bold = "****";
   const italic = "**";
   const underline = "++++";
-  
-  const textArea= useRef(null);
+
+  const textArea = useRef(null);
 
   const txtToCurrentPos = (format) => {
     const thisTxtArea = textArea.current;
@@ -19,32 +19,31 @@ function App() {
     const value = thisTxtArea.value;
     thisTxtArea.value = `${value.slice(0, pos)}${format}${value.slice(pos)}`;
     thisTxtArea.focus();
-    thisTxtArea.selectionEnd = end + format.length / 2 ;
+    thisTxtArea.selectionEnd = end + format.length / 2;
   };
- 
+
   return (
     <div className="app">
       <Toolbar
-        showBold={()=>txtToCurrentPos(bold)}
-        showItalic={()=>txtToCurrentPos(italic)}
-        showUnderline={()=>txtToCurrentPos(underline)}
+        showBold={() => txtToCurrentPos(bold)}
+        showItalic={() => txtToCurrentPos(italic)}
+        showUnderline={() => txtToCurrentPos(underline)}
       />
-      <textarea
-        ref={textArea}
-        value={markdown}
-        onChange={(e) => setMarkdown(e.target.value)}
-        name="editor"
-        id="editor"
-        cols="133"
-        rows="10"
-      ></textarea>
       <div className="markdown__container">
-      
+        <textarea
+          ref={textArea}
+          value={markdown}
+          onChange={(e) => setMarkdown(e.target.value)}
+          name="editor"
+          id="editor"
+          cols="133"
+          rows="10"
+        ></textarea>
 
-      <ReactMarkdown children={markdown} className="markdown__preview" />
-    </div>
+        <ReactMarkdown children={markdown} className="markdown__preview" />
+      </div>
 
-      
+
     </div>
   )
 }
